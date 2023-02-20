@@ -12,11 +12,11 @@ interface IChannelsProps {
 export default function Channels({ serverId }: IChannelsProps) {
   const [{ data: dataServer }, { data: dataCategories }] = useQueries([
     {
-      queryKey: "server",
+      queryKey: ["server", serverId],
       queryFn: () => findServer(serverId),
     },
     {
-      queryKey: "serverCategories",
+      queryKey: ["serverCategories", serverId],
       queryFn: () => findServerCategories(serverId),
     },
   ]);

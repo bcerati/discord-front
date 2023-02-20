@@ -1,9 +1,12 @@
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { findAll as findAllServers } from "../../services/servers";
 import Server from "../../types/Server";
 import ServerIcon from "./ServerIcon";
 
 export default function ServerList() {
+  const routeParams = useParams();
+
   const { data } = useQuery<Server[], Error>({
     queryKey: "servers",
     queryFn: findAllServers,
