@@ -13,6 +13,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Ui />} />
           <Route path="server/:serverId" element={<Ui />} />
+          <Route path="server/:serverId/:channelId" element={<Ui />} />
         </Route>
       </Routes>
     </QueryClientProvider>
