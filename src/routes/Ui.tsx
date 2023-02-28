@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Channel from "../components/channels/Channel";
 import Friends from "../components/friends/Friends";
+import ServerList from "../components/servers/ServerList";
 
 export default function Ui() {
   const { serverId, channelId } = useParams();
@@ -11,6 +12,8 @@ export default function Ui() {
   if (serverId === undefined) {
     return (
       <>
+        <ServerList />
+
         <Friends />
         <Channel />
       </>
@@ -19,6 +22,8 @@ export default function Ui() {
 
   return (
     <>
+      <ServerList />
+
       <ServerCategories serverId={serverId} />
       <Channel serverId={serverId} channelId={channelId} />
     </>

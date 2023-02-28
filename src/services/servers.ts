@@ -1,22 +1,29 @@
 import Server from "../types/Server";
 import ServerCategory from "../types/ServerCategory";
+import { login } from "./login";
 
 export async function findAll(): Promise<any[]> {
-  return fetch("https://127.0.0.1:8001/api/servers").then((response) =>
-    response.json(),
-  );
+  return login().then(async function (opts) {
+    return fetch("https://127.0.0.1:8001/api/servers", {
+      headers: opts.headers,
+    }).then((response) => response.json());
+  });
 }
 
 export async function find(serverId: string): Promise<Server> {
-  return fetch(`https://127.0.0.1:8001/api/servers/${serverId}`).then(
-    (response) => response.json(),
-  );
+  return login().then(async function (opts) {
+    return fetch(`https://127.0.0.1:8001/api/servers/${serverId}`, {
+      headers: opts.headers,
+    }).then((response) => response.json());
+  });
 }
 
 export async function findCategories(
   serverId: string,
 ): Promise<ServerCategory[]> {
-  return fetch(
-    `https://127.0.0.1:8001/api/servers/${serverId}/categories`,
-  ).then((response) => response.json());
+  return login().then(async function (opts) {
+    return fetch(`https://127.0.0.1:8001/api/servers/${serverId}/categories`, {
+      headers: opts.headers,
+    }).then((response) => response.json());
+  });
 }
