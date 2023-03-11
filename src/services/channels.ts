@@ -9,7 +9,7 @@ export async function find(
 ): Promise<Channel> {
   return login().then(async function (opts) {
     return fetch(
-      `https://127.0.0.1:8001/api/servers/${serverId}/channels/${channelId}`,
+      `https://127.0.0.1:8000/api/servers/${serverId}/channels/${channelId}`,
       {
         headers: opts.headers,
       },
@@ -23,7 +23,7 @@ export async function findAllMessages(
 ): Promise<Message[]> {
   return login().then(async function (opts) {
     return fetch(
-      `https://127.0.0.1:8001/api/servers/${serverId}/channels/${channelId}/messages`,
+      `https://127.0.0.1:8000/api/servers/${serverId}/channels/${channelId}/messages`,
       {
         headers: opts.headers,
       },

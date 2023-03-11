@@ -4,7 +4,7 @@ import { login } from "./login";
 
 export async function findAll(): Promise<any[]> {
   return login().then(async function (opts) {
-    return fetch("https://127.0.0.1:8001/api/servers", {
+    return fetch("https://127.0.0.1:8000/api/servers", {
       headers: opts.headers,
     }).then((response) => response.json());
   });
@@ -12,7 +12,7 @@ export async function findAll(): Promise<any[]> {
 
 export async function find(serverId: string): Promise<Server> {
   return login().then(async function (opts) {
-    return fetch(`https://127.0.0.1:8001/api/servers/${serverId}`, {
+    return fetch(`https://127.0.0.1:8000/api/servers/${serverId}`, {
       headers: opts.headers,
     }).then((response) => response.json());
   });
@@ -22,7 +22,7 @@ export async function findCategories(
   serverId: string,
 ): Promise<ServerCategory[]> {
   return login().then(async function (opts) {
-    return fetch(`https://127.0.0.1:8001/api/servers/${serverId}/categories`, {
+    return fetch(`https://127.0.0.1:8000/api/servers/${serverId}/categories`, {
       headers: opts.headers,
     }).then((response) => response.json());
   });

@@ -33,15 +33,19 @@ export default function Channel({ serverId, channelId }: IChannelProps) {
 
   return (
     <div className="flex flex-col flex-1 shrink min-w-0 bg-gray-700">
-      <ChannelHeader />
+      {channel && (
+        <>
+          <ChannelHeader channel={channel} />
 
-      <div className="overflow-y-auto flex-1">
-        {messages?.map(function (message: MessageType) {
-          return <Message key={message.id} message={message} />;
-        })}
-      </div>
+          <div className="overflow-y-auto flex-1">
+            {messages?.map(function (message: MessageType) {
+              return <Message key={message.id} message={message} />;
+            })}
+          </div>
 
-      {channel && <ChannelNewMessage channel={channel} />}
+          <ChannelNewMessage channel={channel} />
+        </>
+      )}
     </div>
   );
 }
